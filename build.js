@@ -5,7 +5,7 @@ const Cmd = require('commander');
 const Watcher = require('watch');
 
 const Echo = require('./utils/echo.js');
-const Config = require('./../compiler-config.js');
+const Config = require('./../../../compiler-config.js'); // TODO - Implement more secure way of finding project root.
 const Css = require('./compilers/css_compiler');
 const Js = require('./compilers/js_compiler');
 
