@@ -2,7 +2,7 @@
 
 const Path = require('path');
 const Webpack = require('webpack');
-const WebpackConfig = require('./../../../../webpack.config.js'); // TODO - Implement more secure way of finding project root.
+const WebpackConfig = require( Path.join(process.cwd(), 'webpack.config.js') ); // TODO - Implement more secure way of finding project root.
 
 /**
  * Instantiates Webpack, applies the

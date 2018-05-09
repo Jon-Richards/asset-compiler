@@ -1,7 +1,7 @@
 {
   "name": "@jon-richards/asset-compiler",
-  "version": "0.1.0",
-  "description": "A simple asset compiler for CSS and JS utilizing node-sass and Webpack.",
+  "version": "0.1.4",
+  "description": "A simple asset compiler for CSS and JS utilizing Node-Sass and Webpack.",
   "main": "build.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
