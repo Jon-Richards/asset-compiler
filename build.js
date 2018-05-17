@@ -74,7 +74,7 @@ function build_css() {
  */
 function build() {
   let opts = [];
-  if (Cmd.javascript) opts.push(build_js);
+  if (Cmd.js) opts.push(build_js);
   if (Cmd.css) opts.push(build_css);
 
   if (opts.length > 0) {
