@@ -1,8 +1,29 @@
 #!/usr/bin/env node
 
 const Path = require('path');
+const Fs = require('fs');
+const Echo = require('./../utils/echo.js');
 const Webpack = require('webpack');
-const WebpackConfig = require( Path.resolve(__dirname, '..', 'webpack.config.js') ); // TODO - Implement more secure way of finding project root.
+
+/**
+ * Checks the process's current working directory for a webpack.config file.
+ * If one is found, returns its path.  If one is not found, return the path
+ * to the webpack.config.js file located in this package.
+ * 
+ * @returns Path to a webpack.config.js file.
+ */
+function resolveConfig () {
+  let _config = '';
+  if ( Fs.existsSync( Path.resolve( process.cwd(), 'webpack.config.js') ) ) {
+    Echo('Using webpack.config.js found at ' + process.cwd());
+    _config = Path.resolve( process.cwd(), 'webpack.config.js' );
+  } else {
+    Echo('Using webpack.config.js in ' + Path.resolve(__dirname, '..'));
+    _config = Path.resolve(__dirname, '..', 'webpack.config.js');
+  }
+  return _config;
+}
+const WebpackConfig = require( resolveConfig() );
 
 /**
  * Instantiates Webpack, applies the

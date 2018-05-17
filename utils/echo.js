@@ -9,8 +9,9 @@ const Colors = require('colors');
  * @param {string} color Color in which to display the message.
  */
 function echo(message, color) {
+  let _c = color === undefined ? 'white' : color;
   let _d = new Date();
-  console.log( _d.toLocaleTimeString() + ' - ' + Colors[color](message) );
+  console.log( _d.toLocaleTimeString() + ' - ' + Colors[_c](message) );
 }
 
 module.exports = echo;
