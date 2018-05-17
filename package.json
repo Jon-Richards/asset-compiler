@@ -9,9 +9,15 @@
   "author": "Jon Richards",
   "license": "ISC",
   "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-env": "^2.4.1",
+    "babel-loader": "^7.1.4",
+    "babel-preset-react": "^6.24.1",
     "colors": "^1.2.4",
     "commander": "^2.15.1",
     "node-sass": "^4.9.0",
+    "ts-loader": "^4.3.0",
+    "typescript": "^2.8.3",
     "watch": "^1.0.2",
     "webpack": "^4.7.0"
   }

@@ -2,7 +2,7 @@
 
 const Path = require('path');
 const Webpack = require('webpack');
-const WebpackConfig = require( Path.join(process.cwd(), 'webpack.config.js') ); // TODO - Implement more secure way of finding project root.
+const WebpackConfig = require( Path.resolve(__dirname, '..', 'webpack.config.js') ); // TODO - Implement more secure way of finding project root.
 
 /**
  * Instantiates Webpack, applies the
@@ -32,10 +32,10 @@ function build_js(input, output, createSource) {
     console.log(status.toString({
       assets: true,
       chunks: false,
+      modules: false,
       timings: false,
       version: false,
       hash: false,
-      modules: true,
       errorDetails: true,
       colors: true,
     }));
