@@ -16,7 +16,7 @@ const Js = require('./compilers/js_compiler');
  * changes.
  */
 Cmd
-  .option('-j, --javascript', 'Build Javascript')
+  .option('-j, --js', 'Build Javascript')
   .option('-c, --css', 'Build CSS')
   .option('-w, --watch <directory>', 'Watch')
   .parse(process.argv);
