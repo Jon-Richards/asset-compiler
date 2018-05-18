@@ -3,9 +3,14 @@ const Path = require('path');
 module.exports = {
   environment: 'dev',
   js: [
+    // {
+    //   input: Path.resolve(__dirname, 'src', 'javascript', 'vanilla', 'app.js'),
+    //   output: Path.resolve(__dirname, 'prod', 'assets', 'js', 'app.js'),
+    //   sourcemap: true
+    // }
     {
-      input: Path.resolve(__dirname, 'src', 'javascript', 'typescript', 'app.ts'),
-      output: Path.resolve(__dirname, 'prod', 'assets', 'js', 'app.js'),
+      input: Path.resolve(__dirname, 'src', 'javascript', 'typescript', 'app.tsx'),
+      output: Path.resolve(__dirname, 'prod', 'assets', 'js', 'app-ts.js'),
       sourcemap: true
     }
   ],
