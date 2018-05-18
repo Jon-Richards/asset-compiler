@@ -34,7 +34,7 @@ const WebpackConfig = require( resolveConfig() );
  * 
  * @param {string} input Path to the entry file that Webpack should use.
  * @param {string} output Path to the file that Webpack should export.
- * @param {boolean} If Webpack should also create a map file for the result.
+ * @param {boolean} createSource If Webpack should also create a map file for the result.
  */
 function build_js(input, output, createSource) {
   let _config = WebpackConfig;

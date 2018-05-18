@@ -3,7 +3,7 @@ const Pathfinder = require('./utils/pathfinder.js');
 const Config = require(Path.resolve(process.cwd(), 'compiler-config.js'));
 
 module.exports = {
-  mode: 'production',
+  mode: Config.environment,
   stats: 'verbose',
 
   /*
