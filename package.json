@@ -3,9 +3,14 @@
   "version": "0.1.5",
   "description": "A simple asset compiler for CSS and JS utilizing Node-Sass and Webpack.",
   "homepage": "https://github.com/Jon-Richards/asset-compiler#readme",
-  "main": "build.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "asset-compiler_build": "bin/build.js",
+    "asset-compiler_build_css": "bin/build_css.js",
+    "asset-compiler_build_js": "bin/build_js.js"
   },
   "author": "Jon Richards",
   "license": "ISC",

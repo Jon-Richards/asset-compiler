@@ -25,8 +25,6 @@ function process_to_localModule (module) {
  * 
  * @param {string} path Path to which to create the directory.
  * @param {function} callback Callback functuon
-   
- }}
  * 
  * @return Callback function
  */
@@ -36,7 +34,7 @@ function make_if_none (path, callback) {
       Echo(err, 'red');
       return false;
     } else {
-      callback();
+      callback(err);
     }
   });
 }
