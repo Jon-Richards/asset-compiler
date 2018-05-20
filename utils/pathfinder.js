@@ -15,7 +15,15 @@ const Echo = require('./echo');
  * @param {string} module directory of the desired node module
  */
 function process_to_localModule (module) {
-  return Path.resolve(Path.relative(process.cwd(), Path.resolve(__dirname, '..', 'node_modules', module) ) )
+  /**
+   * Preserving this in case the other return breaks for local development
+   */
+  // return Path.resolve(Path.relative(process.cwd(), Path.resolve(__dirname, '..', 'node_modules', module) ) )
+
+  /**
+   * Using this, since NPM moves depenedencies to the top of thenode_modules tree
+   */
+  return Path.resolve(process.cwd(), module);
 }
 
 /**
