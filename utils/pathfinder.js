@@ -23,7 +23,7 @@ function process_to_localModule (module) {
   /**
    * Using this, since NPM moves depenedencies to the top of thenode_modules tree
    */
-  return Path.resolve(process.cwd(), module);
+  return Path.resolve(process.cwd(), 'node_modules', module);
 }
 
 /**
