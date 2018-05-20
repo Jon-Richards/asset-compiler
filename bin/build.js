@@ -9,4 +9,4 @@ Cmd
   .option('--watch <directory>', 'Watch')
   .parse(process.argv);
 
-Builder.build();
+Builder.all();
