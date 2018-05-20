@@ -88,33 +88,16 @@ function build() {
 }
 
 /**
- * Initializes this script.  If the watch option
- * was passed, begins watching the appropriate
- * directories for changes.
- * 
- * @param {object} opts Configuration options for the build.
+ * Checks process.argv for a watch command and
+ * sets a watcher on the given directory.
  */
-// (function init(opts) {
-//   if (opts) {
-//     console.log(opts);
-//   } else {
-//     console.log('assuming cli');
-//     build();
-//     if (Cmd.watch) watch(Cmd.watch);
-//   }
-// })();
+(function hasWatcher () {
+  if (Cmd.watch) watch(Cmd.watch);
+})();
 
 module.exports = {
-  build: () => {
-    build();
-    if (Cmd.watch) watch(Cmd.watch);
-  },
-  build_css: () => {
-    build_css();
-    if (Cmd.watch) watch(Cmd.watch);
-  },
-  build_js: () => {
-    build_js();
-    if (Cmd.watch) watch(Cmd.watch);
-  }
+  all: build,
+  css: build_css,
+  js: build_js,
+  ts: build_js
 }

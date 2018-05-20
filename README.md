@@ -69,16 +69,30 @@ Although the asset-compiler ships with the TypeScript compiler as a dependency, 
 ## Usage
 
 ```javascript
-const AssetCompiler = require('@jon-richards/asset-compiler');
-```
+const Compiler = require('@jon-richards/asset-compiler');
 
-### Via Package.json
+Compiler.all(); // Builds all supported asset types.
+
+Compiler.css(); // Builds CSS
+
+Compiler.js(); // Builds JavasScript / TypeScript
+
+Compiler.ts(); // Builds JavaScript / TypeScript (syntactic sugar)
+```
+### Package.json
+> The package will add the command `$ asset-compiler` to the project.  If you install the package globally, the command will be added to your path.
 ```json
 "scripts" : {
-  "build"    : "node ./node_modules/@jon-richards/asset-compiler/build.js",
-  "build:js" : "node ./node_modules/@jon-richards/asset-compiler/build.js '--js'",
-  "build:css" : "node ./node_modules/@jon-richards/asset-compiler/build.js '--css'"
+  "build"    : "asset-compiler",
+  "build:js" : "asset-compiler '--js'",
+  "build:css" : "asset-compiler '--css'"
 }
+```
+
+### CLI
+
+```
+$ node ./node_modules/.bin/asset-compiler --<asset type> --watch=<path to watch>
 ```
 
 ### Options
@@ -89,10 +103,13 @@ Compile SCSS or SASS to CSS.
 Compile JavaScript or TypeScript CommonJS.
 
 `--watch=<directory name>`  
-Watch the specified directory for changes and re-run the script if one is detected.
+Watch the specified directory for changes and re-run the script if one is detected.  
+```javascript
+$ node ./node_modules/.bin/asset-compiler -c --watch='./dev/assets/css';
+```
 
 ---
 
-## Source
+## Github
 
 [https://github.com/Jon-Richards/asset-compiler](https://github.com/Jon-Richards/asset-compiler)

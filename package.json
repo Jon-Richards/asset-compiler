@@ -8,12 +8,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "asset-compiler_build": "bin/build.js",
-    "asset-compiler_build_css": "bin/build_css.js",
-    "asset-compiler_build_js": "bin/build_js.js"
+    "asset-compiler": "bin/build.js"
   },
   "author": "Jon Richards",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "babel-core": "^6.26.3",
     "babel-env": "^2.4.1",
