@@ -3,6 +3,7 @@
 const Path = require('path');
 const Sass = require('node-sass');
 const Fs = require('fs');
+const Pathfinder = require('../utils/pathfinder.js');
 const Echo = require('./../utils/echo.js');
 
 /**
@@ -33,19 +34,21 @@ function render_css( input, output, createSource ) {
  * @param {object} css The node-sass output object used for the css file and its map file.
  */
 function write_css(dest, css) {
-  // Write the CSS file
-  Fs.writeFile(dest, css.css, (err) => {
-    err ? Echo(err + '\r\n', 'red')
-        : Echo('CSS compiled to ' + dest, 'green');
-  });
-  
-  // Write sourcemap
-  if ( css.hasOwnProperty('map') ) {
-    Fs.writeFile(dest + '.map', css.map, (err) => {
+  Pathfinder.make_if_none(dest, () => {
+    // Write the CSS file
+    Fs.writeFile(dest, css.css, (err) => {
       err ? Echo(err + '\r\n', 'red')
-          : Echo('CSS map compiled to ' + dest + '.map', 'green');
+          : Echo('CSS compiled to ' + dest, 'green');
     });
-  }
+    
+    // Write sourcemap
+    if ( css.hasOwnProperty('map') ) {
+      Fs.writeFile(dest + '.map', css.map, (err) => {
+        err ? Echo(err + '\r\n', 'red')
+            : Echo('CSS map compiled to ' + dest + '.map', 'green');
+      });
+    }
+  });
 }
 
 module.exports = {

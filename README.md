@@ -1,5 +1,5 @@
 # @jon-richards/asset-compiler v0.1.x
-Provides an easy install solution for bundling CSS and JavaScript.
+A preconfigured solution for bundling CSS and JavaScript.
 
 ### Calibrated for:
 * TypeScript
@@ -24,7 +24,7 @@ $ npm install --save-dev @jon-richards/asset-compiler
 ## Configuration
 
 ### Compiler Config
-The compiler-config.js file should be placed in the project root and should adhere to the following structure:
+The `compiler-config.js` file should be placed in the project root and should adhere to the following structure:
 ```javascript
 module.exports = {
   environment: 'production', // or 'development' for faster builds
@@ -68,6 +68,10 @@ Although the asset-compiler ships with the TypeScript compiler as a dependency, 
 
 ## Usage
 
+```javascript
+const AssetCompiler = require('@jon-richards/asset-compiler');
+```
+
 ### Via Package.json
 ```json
 "scripts" : {
@@ -88,3 +92,7 @@ Compile JavaScript or TypeScript CommonJS.
 Watch the specified directory for changes and re-run the script if one is detected.
 
 ---
+
+## Source
+
+[https://github.com/Jon-Richards/asset-compiler](https://github.com/Jon-Richards/asset-compiler)

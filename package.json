@@ -1,7 +1,8 @@
 {
   "name": "@jon-richards/asset-compiler",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "A simple asset compiler for CSS and JS utilizing Node-Sass and Webpack.",
+  "homepage": "https://github.com/Jon-Richards/asset-compiler#readme",
   "main": "build.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,6 +16,7 @@
     "babel-preset-react": "^6.24.1",
     "colors": "^1.2.4",
     "commander": "^2.15.1",
+    "mkdirp": "^0.5.1",
     "node-sass": "^4.9.0",
     "ts-loader": "^4.3.0",
     "typescript": "^2.8.3",

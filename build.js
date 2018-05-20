@@ -92,8 +92,7 @@ function build() {
  * was passed, begins watching the appropriate
  * directories for changes.
  */
-function init() {
+(function init() {
   build();
   if (Cmd.watch) watch(Cmd.watch);
-}
-init();
+})();
