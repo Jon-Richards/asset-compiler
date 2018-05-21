@@ -18,5 +18,7 @@ Common utilities, e.g. resolving paths or formatted console output should be del
 
 The project should provide both script and CLI support.  The entry point for CLI support can be placed in the /bin directory, but should still funnel commands through index.js for compilation.
 
+All documentation for code should be placed within the file itself.  At minimum, all functions should be documented with an overview, parameters and returns.
+
 ## TODO
 * Add command to compile TypeScript specifically.

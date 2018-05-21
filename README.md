@@ -13,7 +13,7 @@ A preconfigured solution for bundling CSS and JavaScript.
 * [Installation](#installation)
 * [Configuration](#configuration)
 * [Usage](#usage)
-* [Documentation](#Documentation)
+* [Documentation](#documentation)
 
 ---
 
