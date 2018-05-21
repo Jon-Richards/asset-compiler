@@ -1,4 +1,4 @@
-# @jon-richards/asset-compiler v0.1.x
+# @jon-richards/asset-compiler v1.0.x
 A preconfigured solution for bundling CSS and JavaScript.
 
 ### Calibrated for:
