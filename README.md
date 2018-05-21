@@ -13,6 +13,7 @@ A preconfigured solution for bundling CSS and JavaScript.
 * [Installation](#installation)
 * [Configuration](#configuration)
 * [Usage](#usage)
+* [Documentation](#Documentation)
 
 ---
 
@@ -37,7 +38,8 @@ project root
 ```
 
 ### Compiler Config
-The `compiler-config.js` file should be placed in the project root and should adhere to the following structure:
+
+The `compiler-config.js` file should live in your project's root directory.  It tells the asset-compiler which files to use as entry points, where the resulting compilation should be placed, and handles other miscellaneous settings. The `compiler-config.js` file should adhere to the following structure:
 ```javascript
 module.exports = {
   environment: 'production', // or 'development' for faster builds
@@ -60,22 +62,28 @@ module.exports = {
 }
 ```
 > A sample `compiler-config.js` file can be found here:  
-[https://raw.githubusercontent.com/Jon-Richards/asset-compiler/master/config_examples/compiler-config.js](https://raw.githubusercontent.com/Jon-Richards/asset-compiler/master/config_examples/compiler-config.js)
+[https://raw.githubusercontent.com/Jon-Richards/asset-compiler/master/doc/config_examples/compiler-config.js](https://raw.githubusercontent.com/Jon-Richards/asset-compiler/master/doc/config_examples/compiler-config.js)
 
 ### Webpack
 
-The asset-compiler ships with a Webpack installation set up to process JavaScript, TypeScript and React for both formats including the necessary loaders.  If you'd like to use your own Webpack configuration however, simply place your own `webpack.config.js` file in the project root and install any relevant dependancies at the project level.
+The asset-compiler ships with a Webpack installation set up to process JavaScript, TypeScript and React for both formats including the necessary loaders.  If you'd like to use your own Webpack configuration however, simply place your own `webpack.config.js` file in the project root and install any relevant loaders, plugins, etc at the project level.
+
+> Official Webpack documetation:  
+[https://webpack.js.org/concepts/](https://webpack.js.org/concepts/)
 
 > A sample `webpack.config.js` file can be found here:  
-[https://raw.githubusercontent.com/Jon-Richards/asset-compiler/master/config_examples/webpack.config.js](https://raw.githubusercontent.com/Jon-Richards/asset-compiler/master/config_examples/webpack.config.js)
+[https://raw.githubusercontent.com/Jon-Richards/asset-compiler/master/doc/config_examples/webpack.config.js](https://raw.githubusercontent.com/Jon-Richards/asset-compiler/master/doc/config_examples/webpack.config.js)
 
 ### TypeScript
-Although the asset-compiler ships with the TypeScript compiler as a dependency, you still need to place a `tsconfig.json` file at your project root and install any third party types, e.g. [@types/react] at the project level.  This approach provides the following benefits:
+Although the asset-compiler ships with the TypeScript compiler as a dependency, you still need to place a `tsconfig.json` file at your project root and install any third party types, e.g. [@types/react](https://www.npmjs.com/package/@types/react) at the project level.  This approach provides the following benefits:
 1. The asset-compiler and your IDE will both evaluate TypeScript using the same `tsconfig.json` file, guaranteeing they follow the same rules.
 2. Any type definitions relevant to the project can be packaged within.
 
+> Official TypeScript documentation:  
+[https://www.typescriptlang.org/docs/home.html](https://www.typescriptlang.org/docs/home.html)
+
 > A sample `tsconfig.json` file can be found here:  
-[https://raw.githubusercontent.com/Jon-Richards/asset-compiler/master/config_examples/tsconfig.json](https://raw.githubusercontent.com/Jon-Richards/asset-compiler/master/config_examples/tsconfig.json)
+[https://raw.githubusercontent.com/Jon-Richards/asset-compiler/master/doc/config_examples/tsconfig.json](https://raw.githubusercontent.com/Jon-Richards/asset-compiler/master/doc/config_examples/tsconfig.json)
 
 ---
 
@@ -123,6 +131,10 @@ $ ./node_modules/.bin/asset-compiler -c --watch='./dev/assets/css';
 
 ---
 
-## Github
+## Documentation
 
+### Internal Docs
+[https://github.com/Jon-Richards/asset-compiler/tree/master/doc](https://github.com/Jon-Richards/asset-compiler/tree/master/doc)
+
+### Github
 [https://github.com/Jon-Richards/asset-compiler](https://github.com/Jon-Richards/asset-compiler)
