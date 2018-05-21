@@ -23,6 +23,19 @@ $ npm install --save-dev @jon-richards/asset-compiler
 
 ## Configuration
 
+### Directory Structure
+```
+project root
+    |
+    |- package.json
+    |
+    |- compiler-config.js
+    |
+    |- tsconfig.js (if using TypeScript)
+    |
+    |- webpack.config.js (optional)
+```
+
 ### Compiler Config
 The `compiler-config.js` file should be placed in the project root and should adhere to the following structure:
 ```javascript
