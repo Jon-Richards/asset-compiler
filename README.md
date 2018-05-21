@@ -71,13 +71,13 @@ Although the asset-compiler ships with the TypeScript compiler as a dependency, 
 ```javascript
 const Compiler = require('@jon-richards/asset-compiler');
 
-Compiler.all(); // Builds all supported asset types.
+Compiler.all(); // Builds all supported asset types
 
 Compiler.css(); // Builds CSS
 
-Compiler.js(); // Builds JavasScript / TypeScript
+Compiler.js(); // Builds JavasScript or TypeScript
 
-Compiler.ts(); // Builds JavaScript / TypeScript (syntactic sugar)
+Compiler.ts(); // Builds JavaScript or TypeScript (syntactic sugar)
 ```
 ### Package.json
 > The package will add the command `$ asset-compiler` to the project.  If you install the package globally, the command will be added to your path.
@@ -92,7 +92,7 @@ Compiler.ts(); // Builds JavaScript / TypeScript (syntactic sugar)
 ### CLI
 
 ```
-$ node ./node_modules/.bin/asset-compiler --<asset type> --watch=<path to watch>
+$ ./node_modules/.bin/asset-compiler --<asset type> --watch=<path to watch>
 ```
 
 ### Options
