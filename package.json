@@ -1,6 +1,6 @@
 {
   "name": "@jon-richards/asset-compiler",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A simple asset compiler for CSS and JS utilizing Node-Sass and Webpack.",
   "homepage": "https://github.com/Jon-Richards/asset-compiler#readme",
   "main": "index.js",
