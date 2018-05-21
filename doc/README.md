@@ -1,3 +1,5 @@
+# @jon-richards/asset-compiler (Internal Docs)
+
 ## Objective
 Create a tool with **simple** configuration for building assets that can be used across multiple projects, allowing me to start working faster.
 
