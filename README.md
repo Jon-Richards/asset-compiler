@@ -31,7 +31,7 @@ project root
     |
     |- compiler-config.js
     |
-    |- tsconfig.js (if using TypeScript)
+    |- tsconfig.json (if using TypeScript)
     |
     |- webpack.config.js (optional)
 ```
