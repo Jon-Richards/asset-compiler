@@ -105,7 +105,7 @@ Compile JavaScript or TypeScript CommonJS.
 `--watch=<directory name>`  
 Watch the specified directory for changes and re-run the script if one is detected.  
 ```javascript
-$ node ./node_modules/.bin/asset-compiler -c --watch='./dev/assets/css';
+$ ./node_modules/.bin/asset-compiler -c --watch='./dev/assets/css';
 ```
 
 ---
