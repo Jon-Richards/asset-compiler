@@ -84,8 +84,8 @@ Compiler.ts(); // Builds JavaScript / TypeScript (syntactic sugar)
 ```json
 "scripts" : {
   "build"    : "asset-compiler",
-  "build:js" : "asset-compiler '--js'",
-  "build:css" : "asset-compiler '--css'"
+  "build:js" : "asset-compiler --js",
+  "build:css" : "asset-compiler --css"
 }
 ```
 

@@ -15,15 +15,14 @@ const Webpack = require('webpack');
 function resolveConfig () {
   let _config = '';
   if ( Fs.existsSync( Path.resolve( process.cwd(), 'webpack.config.js') ) ) {
-    Echo('Using webpack.config.js found at ' + process.cwd());
     _config = Path.resolve( process.cwd(), 'webpack.config.js' );
   } else {
-    Echo('Using webpack.config.js in ' + Path.resolve(__dirname, '..'));
     _config = Path.resolve(__dirname, '..', 'webpack.config.js');
   }
   return _config;
 }
-// const WebpackConfig = require( resolveConfig() );
+const configPath = resolveConfig();
+const WebpackConfig = require( configPath );
 
 /**
  * Instantiates Webpack, applies the
@@ -37,8 +36,8 @@ function resolveConfig () {
  * @param {boolean} createSource If Webpack should also create a map file for the result.
  */
 function build_js(input, output, createSource) {
-  // let _config = WebpackConfig;
-  let _config =  require( resolveConfig() );
+  let _config =  WebpackConfig;
+  Echo('Using webpack.config.js in ' + Path.resolve(configPath, '..'));
   
   // Augment the config object with this function's parameters.
   _config.entry = input;
