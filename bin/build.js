@@ -9,4 +9,14 @@ Cmd
   .option('--watch <directory>', 'Watch')
   .parse(process.argv);
 
-Builder.all();
+let opts = [];
+if (Cmd.js) opts.push('js');
+if (Cmd.css) opts.push('css');
+
+if (opts.length > 0) {
+  for (var i = 0; i < opts.length; i++) {
+    Builder[opts[i]]();
+  }
+} else {
+  Builder.all();
+}

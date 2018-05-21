@@ -23,7 +23,7 @@ function resolveConfig () {
   }
   return _config;
 }
-const WebpackConfig = require( resolveConfig() );
+// const WebpackConfig = require( resolveConfig() );
 
 /**
  * Instantiates Webpack, applies the
@@ -37,7 +37,8 @@ const WebpackConfig = require( resolveConfig() );
  * @param {boolean} createSource If Webpack should also create a map file for the result.
  */
 function build_js(input, output, createSource) {
-  let _config = WebpackConfig;
+  // let _config = WebpackConfig;
+  let _config =  require( resolveConfig() );
   
   // Augment the config object with this function's parameters.
   _config.entry = input;
