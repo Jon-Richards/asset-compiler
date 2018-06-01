@@ -1,9 +1,11 @@
 const Path = require('path');
 const Pathfinder = require('./utils/pathfinder.js');
 const Config = require(Path.resolve(process.cwd(), 'compiler-config.js'));
+const BabelPreset_Env = require('babel-preset-env');
+const BabelPreset_React = require('babel-preset-react');
 
 module.exports = {
-  mode: 'production',
+  mode: Config.environment,
   stats: 'verbose',
 
   /*
@@ -24,22 +26,16 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.tsx?$/, 
-        // loader: 'ts-loader' },
-        // loader: Path.resolve(Path.relative(process.cwd(), Path.resolve(__dirname, 'node_modules', 'ts-loader') ) )
+        test: /\.tsx?$/,
         loader: Pathfinder.process_to_localModule('ts-loader')
       },
       { 
         test: /\.jsx?/,
-        use: {
-          // loader: 'babel-loader',
-          loader: Pathfinder.process_to_localModule('babel-loader'),
+        use: {          loader: Pathfinder.process_to_localModule('babel-loader'),
           options: {
             presets: [
-              // 'env',
-              Pathfinder.process_to_localModule('babel-preset-env'),
-              // 'react'
-              Pathfinder.process_to_localModule('babel-preset-react')
+              BabelPreset_Env,
+              BabelPreset_React
             ]
           }
         } 
