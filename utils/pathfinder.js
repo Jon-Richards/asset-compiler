@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
 /**
- * Utility methods for resolving paths between packages.
+ * Utility methods for handling path related issues, e.g. creating directories
+ * where none exist or resolving paths between modules.
  */
 
 const Path = require('path');
@@ -13,6 +14,9 @@ const Echo = require('./echo');
  * to a module in this package's node_modules directory.
  * 
  * @param {string} module directory of the desired node module
+ * 
+ * @returns A relative path from the process's current working directory to the
+ *          given module in asset-compiler's node_modules directory.
  */
 function process_to_localModule (module) {
   /**

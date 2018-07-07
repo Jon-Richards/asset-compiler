@@ -1,28 +1,10 @@
 #!/usr/bin/env node
 
 const Path = require('path');
-const Fs = require('fs');
 const Echo = require('./../utils/echo.js');
 const Webpack = require('webpack');
-
-/**
- * Checks the process's current working directory for a webpack.config file.
- * If one is found, returns its path.  If one is not found, return the path
- * to the webpack.config.js file located in this package.
- * 
- * @returns Path to a webpack.config.js file.
- */
-function resolveConfig () {
-  let _config = '';
-  if ( Fs.existsSync( Path.resolve( process.cwd(), 'webpack.config.js') ) ) {
-    _config = Path.resolve( process.cwd(), 'webpack.config.js' );
-  } else {
-    _config = Path.resolve(__dirname, '..', 'webpack.config.js');
-  }
-  return _config;
-}
-const configPath = resolveConfig();
-const WebpackConfig = require( configPath );
+const ResolveWPConfig = require('./../utils/resolve_webpack_config.js');
+const Config = require( Path.resolve( process.cwd(), 'compiler-config.js' ) );
 
 /**
  * Instantiates Webpack, applies the
@@ -33,22 +15,33 @@ const WebpackConfig = require( configPath );
  * 
  * @param {string} input Path to the entry file that Webpack should use.
  * @param {string} output Path to the file that Webpack should export.
- * @param {boolean} createSource If Webpack should also create a map file for the result.
+ * @param {boolean} createSourceMap If Webpack should also create a map file for the result.
  */
-function build_js(input, output, createSource) {
-  let _config =  WebpackConfig;
-  Echo('Using webpack.config.js in ' + Path.resolve(configPath, '..'));
-  
-  // Augment the config object with this function's parameters.
-  _config.entry = input;
-  _config.output = {
+function build_js(input, output, createSourceMap) {
+  let _wp_config_path = ResolveWPConfig();
+  let _wp_config = require( _wp_config_path );
+  Echo('Using webpack.config.js in ' + _wp_config_path);
+
+  /**
+   * Augment the config object with parameters from this function
+   * as well as the overall compiler-configuration
+   */
+
+  // Webpack accepts key:value pairs as its entry.  Using this format establishes the key as
+  // the "chunk" name, which Webpack can then use for outputs in various plugins, loaders, etc.
+   let _chunkname = String(Path.basename(output)).replace(/\.[^/.]+$/, '');
+  _wp_config.entry = {
+    [_chunkname]: input
+  };
+  _wp_config.output = {
     path: Path.dirname(output),
     filename: Path.basename(output)
   }
-  if (createSource) _config.devtool = 'source-map';
+  _wp_config.mode = Config.environment;
+  _wp_config.devtool = createSourceMap ? 'source-map' : '';
 
   // Run Webpack with the new config.
-  let _wp = Webpack(_config);
+  let _wp = Webpack(_wp_config);
   _wp.run((err, status) => {
     console.log(status.toString({
       assets: true,
@@ -59,9 +52,11 @@ function build_js(input, output, createSource) {
       hash: false,
       errorDetails: true,
       colors: true,
+      children: false
     }));
   });
 }
+
 
 module.exports = {
   build: build_js
