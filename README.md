@@ -14,7 +14,7 @@ A preconfigured solution for bundling CSS and JavaScript.
 * [Configuration](#configuration)
 * [Usage](#usage)
 * [Documentation](#documentation)
-* [Further Reading](#further%20reading)
+* [Further-Reading](#further-reading)
 
 ---
 
@@ -142,7 +142,7 @@ $ ./node_modules/.bin/asset-compiler -c --watch='./dev/assets/css';
 
 ---
 
-## Further%20Reading
+## Further-Reading
 
 ### CSS Modules
 
