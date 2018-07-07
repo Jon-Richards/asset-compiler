@@ -14,6 +14,7 @@ A preconfigured solution for bundling CSS and JavaScript.
 * [Configuration](#configuration)
 * [Usage](#usage)
 * [Documentation](#documentation)
+* [Further Reading](#further%20reading)
 
 ---
 
@@ -138,3 +139,44 @@ $ ./node_modules/.bin/asset-compiler -c --watch='./dev/assets/css';
 
 ### Github
 [https://github.com/Jon-Richards/asset-compiler](https://github.com/Jon-Richards/asset-compiler)
+
+---
+
+## Further%20Reading
+
+### CSS Modules
+
+> This is an **optional** feature.  The asset compiler ships with an independant solution for compiling SCSS.  If you'd like to import your CSS via your JS however, read on...
+
+The Webpack installation ships with support for CSS modules, which in turn support SASS as well.  CSS files will be written based on the output file that references them.  
+
+So if `app.js` imports a few css modules, `app.css` will be exported as a sibling of `app.js` and will contain the combined output of all css modules that were included.
+
+#### Naming Conventions
+By default, class names follow `[.scss file name]__[class name] [etc.]` format.  
+So a .scss file named `"styles.scss"` with the following:
+```scss
+// SCSS
+.button--red {
+  background-color: #f00000;
+  &:hover {
+    background-color: #ff0000;
+  }
+}
+```
+
+Will render as:
+```scss
+.styles__button--red {
+  background-color: #f00000;
+}
+.styles__button--red:hover {
+  background-color: #ff0000;
+}
+```
+
+This approach allows the following advantages:
+1. Rendered style names are predictable, which comes in handy when writing advanced selectors, dynamic classes with SASS, or complex display logic for stateful components.
+2. Webpack effectively does the namespacing for you.  CSS classes within each file can be named concisely, e.g. ".button".
+3. You can still leverage the cascade if you choose to.
+4. Only the SCSS modules that you import will be included in the rendered CSS file, resulting in lighter files.

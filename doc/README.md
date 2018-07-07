@@ -7,7 +7,7 @@ Create a tool with **simple** configuration for building assets that can be used
 
 * Abstract more complex tools down to my most common use cases and create a project-agnostic implementation of those tools.
 * Strict separation of concerns, CSS compiler **only** compiles CSS, likewise for JavaScript etc.
-* Provide sane out-of-the-box configuration than can be overwritten easily.
+* Provide sane out-of-the-box configuration that can be overwritten easily.
 * Project should be self contained, avoid peer dependency conflicts if at all possible.  (Consider version locking everything.)
 
 ## Detailed Approach
