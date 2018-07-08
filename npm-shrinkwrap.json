@@ -1,6 +1,6 @@
 {
   "name": "@jon-richards/asset-compiler",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "dependencies": {
     "@webassemblyjs/ast": {
       "version": "1.4.3",
@@ -1020,6 +1020,23 @@
       "version": "1.0.4",
       "from": "clone@>=1.0.2 <2.0.0",
       "resolved": "https://registry.npmjs.org/clone/-/clone-1.0.4.tgz"
+    },
+    "clone-deep": {
+      "version": "2.0.2",
+      "from": "clone-deep@>=2.0.1 <3.0.0",
+      "resolved": "https://registry.npmjs.org/clone-deep/-/clone-deep-2.0.2.tgz",
+      "dependencies": {
+        "for-own": {
+          "version": "1.0.0",
+          "from": "for-own@>=1.0.0 <2.0.0",
+          "resolved": "https://registry.npmjs.org/for-own/-/for-own-1.0.0.tgz"
+        },
+        "kind-of": {
+          "version": "6.0.2",
+          "from": "kind-of@>=6.0.0 <7.0.0",
+          "resolved": "https://registry.npmjs.org/kind-of/-/kind-of-6.0.2.tgz"
+        }
+      }
     },
     "coa": {
       "version": "1.0.4",
@@ -2134,6 +2151,11 @@
       "from": "lodash.mergewith@>=4.6.0 <5.0.0",
       "resolved": "https://registry.npmjs.org/lodash.mergewith/-/lodash.mergewith-4.6.1.tgz"
     },
+    "lodash.tail": {
+      "version": "4.1.1",
+      "from": "lodash.tail@>=4.1.1 <5.0.0",
+      "resolved": "https://registry.npmjs.org/lodash.tail/-/lodash.tail-4.1.1.tgz"
+    },
     "lodash.uniq": {
       "version": "4.5.0",
       "from": "lodash.uniq@>=4.5.0 <5.0.0",
@@ -2275,6 +2297,18 @@
           "version": "1.0.1",
           "from": "is-extendable@>=1.0.1 <2.0.0",
           "resolved": "https://registry.npmjs.org/is-extendable/-/is-extendable-1.0.1.tgz"
+        }
+      }
+    },
+    "mixin-object": {
+      "version": "2.0.1",
+      "from": "mixin-object@>=2.0.1 <3.0.0",
+      "resolved": "https://registry.npmjs.org/mixin-object/-/mixin-object-2.0.1.tgz",
+      "dependencies": {
+        "for-in": {
+          "version": "0.1.8",
+          "from": "for-in@>=0.1.3 <0.2.0",
+          "resolved": "https://registry.npmjs.org/for-in/-/for-in-0.1.8.tgz"
         }
       }
     },
@@ -3167,6 +3201,11 @@
       "from": "sass-graph@>=2.2.4 <3.0.0",
       "resolved": "https://registry.npmjs.org/sass-graph/-/sass-graph-2.2.4.tgz"
     },
+    "sass-loader": {
+      "version": "7.0.3",
+      "from": "sass-loader@latest",
+      "resolved": "https://registry.npmjs.org/sass-loader/-/sass-loader-7.0.3.tgz"
+    },
     "sax": {
       "version": "1.2.4",
       "from": "sax@>=1.2.1 <1.3.0",
@@ -3230,6 +3269,18 @@
       "version": "2.4.11",
       "from": "sha.js@>=2.4.0 <3.0.0",
       "resolved": "https://registry.npmjs.org/sha.js/-/sha.js-2.4.11.tgz"
+    },
+    "shallow-clone": {
+      "version": "1.0.0",
+      "from": "shallow-clone@>=1.0.0 <2.0.0",
+      "resolved": "https://registry.npmjs.org/shallow-clone/-/shallow-clone-1.0.0.tgz",
+      "dependencies": {
+        "kind-of": {
+          "version": "5.1.0",
+          "from": "kind-of@>=5.0.0 <6.0.0",
+          "resolved": "https://registry.npmjs.org/kind-of/-/kind-of-5.1.0.tgz"
+        }
+      }
     },
     "signal-exit": {
       "version": "3.0.2",

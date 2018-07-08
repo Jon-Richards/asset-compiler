@@ -1,6 +1,6 @@
 {
   "name": "@jon-richards/asset-compiler",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "A simple asset compiler for CSS and JS utilizing Node-Sass and Webpack.",
   "homepage": "https://github.com/Jon-Richards/asset-compiler#readme",
   "main": "index.js",
@@ -24,6 +24,7 @@
     "mini-css-extract-plugin": "^0.4.0",
     "mkdirp": "^0.5.1",
     "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.3",
     "style-loader": "^0.21.0",
     "ts-loader": "^4.3.0",
     "typescript": "^2.8.3",
