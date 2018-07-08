@@ -9,6 +9,7 @@ const Config = require(Path.resolve(process.cwd(), 'compiler-config.js'));
 
 const Css = require('./compilers/css_compiler');
 const Js = require('./compilers/js_compiler');
+const Devserver = require('./dev-server.js');
 
 /**
  * Parameters used for deciding which assets to build
@@ -18,6 +19,7 @@ const Js = require('./compilers/js_compiler');
 Cmd
   .option('-j, --js', 'Build Javascript')
   .option('-c, --css', 'Build CSS')
+  .option('-d, --devserver', 'Run the dev server')
   .option('-w, --watch <directory>', 'Watch')
   .parse(process.argv);
 
@@ -68,6 +70,13 @@ function build_css() {
 }
 
 /**
+ * Starts the dev server.
+ */
+function run_devserver() {
+  Devserver();
+}
+
+/**
  * Builds assets depending on which parameters
  * were passed to this script.  If no options
  * are passed, build everything.
@@ -76,6 +85,12 @@ function build() {
   let opts = [];
   if (Cmd.js) opts.push(build_js);
   if (Cmd.css) opts.push(build_css);
+  
+  // No tasks should run along with the dev server.
+  if (Cmd.devserver) {
+    run_devserver();
+    return false;
+  }
 
   if (opts.length > 0) {
     for (var i = 0; i < opts.length; i++) {
@@ -99,5 +114,6 @@ module.exports = {
   all: build,
   css: build_css,
   js: build_js,
+  devserver: run_devserver,
   ts: build_js
 }

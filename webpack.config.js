@@ -1,4 +1,5 @@
 const Pathfinder = require('./utils/pathfinder.js');
+const Webpack = require('webpack');
 const BabelPreset_Env = require('babel-preset-env');
 const BabelPreset_React = require('babel-preset-react');
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
@@ -23,7 +24,8 @@ module.exports = {
     new MiniCSSExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css'
-    })
+    }),
+    new Webpack.HotModuleReplacementPlugin()
   ], // end plugins
 
   module: {
@@ -84,5 +86,6 @@ module.exports = {
         ]
       }
     ]
-  } // end module
+  }, // end module
+
 } // end config

@@ -1,10 +1,7 @@
 #!/usr/bin/env node
 
-const Path = require('path');
-const Echo = require('./../utils/echo.js');
 const Webpack = require('webpack');
-const ResolveWPConfig = require('./../utils/resolve_webpack_config.js');
-const Config = require( Path.resolve( process.cwd(), 'compiler-config.js' ) );
+const CompleteWebpackConfig = require('./../utils/complete_webpack_config');
 
 /**
  * Instantiates Webpack, applies the
@@ -18,27 +15,8 @@ const Config = require( Path.resolve( process.cwd(), 'compiler-config.js' ) );
  * @param {boolean} createSourceMap If Webpack should also create a map file for the result.
  */
 function build_js(input, output, createSourceMap) {
-  let _wp_config_path = ResolveWPConfig();
-  let _wp_config = require( _wp_config_path );
-  Echo('Using webpack.config.js in ' + _wp_config_path);
 
-  /**
-   * Augment the config object with parameters from this function
-   * as well as the overall compiler-configuration
-   */
-
-  // Webpack accepts key:value pairs as its entry.  Using this format establishes the key as
-  // the "chunk" name, which Webpack can then use for outputs in various plugins, loaders, etc.
-   let _chunkname = String(Path.basename(output)).replace(/\.[^/.]+$/, '');
-  _wp_config.entry = {
-    [_chunkname]: input
-  };
-  _wp_config.output = {
-    path: Path.dirname(output),
-    filename: Path.basename(output)
-  }
-  _wp_config.mode = Config.environment;
-  _wp_config.devtool = createSourceMap ? 'source-map' : '';
+  let _wp_config = CompleteWebpackConfig(input, output, createSourceMap);
 
   // Run Webpack with the new config.
   let _wp = Webpack(_wp_config);
