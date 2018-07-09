@@ -25,7 +25,7 @@ function resolveWebpackConfig () {
   if ( Fs.existsSync( Path.resolve( process.cwd(), 'webpack.config.js') ) ) {
     _config = Path.resolve( process.cwd(), 'webpack.config.js' );
   } else {
-    _config = Path.resolve(__dirname, '..', 'webpack.config.js');
+    _config = Path.resolve(__dirname, '..', '..', 'webpack.config.js');
   }
   
   return _config;

@@ -3,7 +3,7 @@
 const Path = require('path');
 const Sass = require('node-sass');
 const Fs = require('fs');
-const Pathfinder = require('../utils/pathfinder.js');
+const Pathfinder = require('./../utils/pathfinder.js');
 const Echo = require('./../utils/echo.js');
 
 /**

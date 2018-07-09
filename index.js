@@ -4,12 +4,12 @@ const Path = require('path');
 const Cmd = require('commander');
 const Watcher = require('watch');
 
-const Echo = require('./utils/echo.js');
+const Echo = require('./app/utils/echo.js');
 const Config = require(Path.resolve(process.cwd(), 'compiler-config.js'));
 
-const Css = require('./compilers/css_compiler');
-const Js = require('./compilers/js_compiler');
-const Devserver = require('./dev-server.js');
+const Css = require('./app/scripts/css_compiler');
+const Js = require('./app/scripts/js_compiler');
+const Devserver = require('./app/scripts/devserver.js');
 
 /**
  * Parameters used for deciding which assets to build

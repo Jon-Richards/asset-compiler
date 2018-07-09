@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "asset-compiler": "bin/build.js"
+    "asset-compiler": "bin/cli.js"
   },
   "author": "Jon Richards",
   "license": "MIT",
