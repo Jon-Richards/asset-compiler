@@ -5548,6 +5548,11 @@
         }
       }
     },
+    "webpack-hot-middleware": {
+      "version": "2.22.3",
+      "from": "webpack-hot-middleware@latest",
+      "resolved": "https://registry.npmjs.org/webpack-hot-middleware/-/webpack-hot-middleware-2.22.3.tgz"
+    },
     "webpack-log": {
       "version": "1.2.0",
       "from": "webpack-log@>=1.1.2 <2.0.0",
