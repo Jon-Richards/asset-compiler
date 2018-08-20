@@ -1,19 +1,21 @@
+const Path = require('path');
 const Pathfinder = require('./app/utils/pathfinder.js');
+const Cmd = require('commander');
 const Webpack = require('webpack');
 const BabelPreset_Env = require('babel-preset-env');
 const BabelPreset_React = require('babel-preset-react');
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
+const Config = require(Path.resolve(process.cwd(), 'compiler-config.js'));
 
-module.exports = {
-    
+module.exports = {    
   entry: '', // populated by ./compilers/js_compiler.js
-  
+
   output: '', // populated by ./compilers/js_compiler.js
-  
-  devtool: '', // populated by ./compilers/js_compiler.js
 
   mode: 'none', // populated by ./compilers/js_compiler.js
   
+  devtool: '', // populated by ./compilers/js_compiler.js
+
   stats: 'verbose',
 
   resolve: {
@@ -68,8 +70,14 @@ module.exports = {
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
+          // At the time of this writing, MiniCSSExtractPlugin doesn't
+          // support hot module replacement.  If the compiler-config uses
+          // HMR, use style-loader instead.
+          //
+          // Cmd.devserver is inherited from index.js
           {
-            loader: MiniCSSExtractPlugin.loader,
+            loader: Cmd.devserver && Config.devServer.useHotModuleReplacement ? Pathfinder.process_to_localModule('style-loader')
+                                                                              : MiniCSSExtractPlugin.loader,
             options: {}
           },
           {

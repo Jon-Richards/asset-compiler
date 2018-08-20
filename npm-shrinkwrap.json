@@ -112,6 +112,38 @@
       "from": "@webassemblyjs/wast-printer@1.4.3",
       "resolved": "https://registry.npmjs.org/@webassemblyjs/wast-printer/-/wast-printer-1.4.3.tgz"
     },
+    "@webpack-contrib/schema-utils": {
+      "version": "1.0.0-beta.0",
+      "from": "@webpack-contrib/schema-utils@>=1.0.0-beta.0 <2.0.0",
+      "resolved": "https://registry.npmjs.org/@webpack-contrib/schema-utils/-/schema-utils-1.0.0-beta.0.tgz",
+      "dependencies": {
+        "ansi-regex": {
+          "version": "3.0.0",
+          "from": "ansi-regex@>=3.0.0 <4.0.0",
+          "resolved": "https://registry.npmjs.org/ansi-regex/-/ansi-regex-3.0.0.tgz"
+        },
+        "ansi-styles": {
+          "version": "3.2.1",
+          "from": "ansi-styles@>=3.2.1 <4.0.0",
+          "resolved": "https://registry.npmjs.org/ansi-styles/-/ansi-styles-3.2.1.tgz"
+        },
+        "chalk": {
+          "version": "2.4.1",
+          "from": "chalk@>=2.3.2 <3.0.0",
+          "resolved": "https://registry.npmjs.org/chalk/-/chalk-2.4.1.tgz"
+        },
+        "strip-ansi": {
+          "version": "4.0.0",
+          "from": "strip-ansi@>=4.0.0 <5.0.0",
+          "resolved": "https://registry.npmjs.org/strip-ansi/-/strip-ansi-4.0.0.tgz"
+        },
+        "supports-color": {
+          "version": "5.4.0",
+          "from": "supports-color@>=5.3.0 <6.0.0",
+          "resolved": "https://registry.npmjs.org/supports-color/-/supports-color-5.4.0.tgz"
+        }
+      }
+    },
     "abbrev": {
       "version": "1.1.1",
       "from": "abbrev@>=1.0.0 <2.0.0",
@@ -2884,9 +2916,9 @@
       "resolved": "https://registry.npmjs.org/mimic-fn/-/mimic-fn-1.2.0.tgz"
     },
     "mini-css-extract-plugin": {
-      "version": "0.4.0",
-      "from": "mini-css-extract-plugin@latest",
-      "resolved": "https://registry.npmjs.org/mini-css-extract-plugin/-/mini-css-extract-plugin-0.4.0.tgz"
+      "version": "0.4.1",
+      "from": "mini-css-extract-plugin@>=0.4.0 <0.5.0",
+      "resolved": "https://registry.npmjs.org/mini-css-extract-plugin/-/mini-css-extract-plugin-0.4.1.tgz"
     },
     "minimalistic-assert": {
       "version": "1.0.1",
@@ -4390,6 +4422,11 @@
       "version": "2.2.1",
       "from": "tar@>=2.0.0 <3.0.0",
       "resolved": "https://registry.npmjs.org/tar/-/tar-2.2.1.tgz"
+    },
+    "text-table": {
+      "version": "0.2.0",
+      "from": "text-table@>=0.2.0 <0.3.0",
+      "resolved": "https://registry.npmjs.org/text-table/-/text-table-0.2.0.tgz"
     },
     "through2": {
       "version": "2.0.3",

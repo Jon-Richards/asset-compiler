@@ -7,7 +7,7 @@
 
 const Path = require('path');
 const Mkdirp = require('mkdirp');
-const Echo = require('./echo');
+const Echo = require('./echo.js');
 
 /**
  * Returns a relative path from the process's current working directory
@@ -19,15 +19,7 @@ const Echo = require('./echo');
  *          given module in asset-compiler's node_modules directory.
  */
 function process_to_localModule (module) {
-  /**
-   * Preserving this in case the other return breaks for local development
-   */
   return Path.resolve(Path.relative(process.cwd(), Path.resolve(__dirname, '..', '..', 'node_modules', module) ) )
-
-  /**
-   * Using this, since NPM moves depenedencies to the top of thenode_modules tree
-   */
-  // return Path.resolve(process.cwd(), 'node_modules', module);
 }
 
 /**

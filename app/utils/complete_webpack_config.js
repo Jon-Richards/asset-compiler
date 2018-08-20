@@ -33,6 +33,26 @@ function resolveWebpackConfig () {
 
 
 /**
+ * Searches a given compiler-config object for a public path setting
+ * and returns it if one is fonud.  Else returns an empty string. 
+ * 
+ * @param {object} config Configuration being used by the project.
+ * 
+ * @returns {string} The value of the config object's publicPath property
+ *                   if one was found.  Else returns an empty string. 
+ */
+function getPublicPath (config) {
+  if (config.hasOwnProperty('devServer')) {
+    if (config.devServer.hasOwnProperty('publicPath')) {
+      return config.devServer.publicPath;
+    }
+  }
+
+  return '';
+}
+
+
+/**
  * Imports the webpack.config.js being used by the project
  * and applies the properties defined in compiler-config.js.
  * 
@@ -43,9 +63,9 @@ function resolveWebpackConfig () {
  * @returns A valid Webpack configuration object.
  */
 module.exports = (input, output, createSourceMap) => {
+  // Determine if we should use the default webpack config or one in the project root.
   let _wp_config_path = resolveWebpackConfig();
   Echo('Using webpack.config.js in ' + _wp_config_path);
-
   let _wp_config = require(_wp_config_path);
   
   // Webpack accepts key:value pairs as its entry.  Using this format establishes the key as
@@ -54,10 +74,16 @@ module.exports = (input, output, createSourceMap) => {
   _wp_config.entry = {
     [_chunkname]: input
   };
+  
+  // Configure the output values.
   _wp_config.output = {
     path: Path.dirname(output),
     filename: Path.basename(output)
   }
+
+  // Additional checks against the compiler-config file.
+  let _publicPath = getPublicPath(Config); // SEE https://webpack.js.org/guides/public-path/
+  if (_publicPath) _wp_config.output.publicPath = _publicPath;
   _wp_config.mode = Config.environment;
   _wp_config.devtool = createSourceMap ? 'source-map' : '';
 
