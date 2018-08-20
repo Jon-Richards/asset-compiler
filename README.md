@@ -95,29 +95,35 @@ Configuration is as follows:
 module.exports = {
   // [...] CSS amd JavaScript configurations
 
-  devServer: {
-    // Domain at which the server takes requets.
-    hostname: 'localhost',
-    // Port on which to listen for requets.
-    port: 3000,
-    // Used by Webpack, SEE: https://webpack.js.org/guides/public-path/
-    publicPath: '/assets/js/',
-    // The server "public" directory.
-    publicDir: Path.resolve( __dirname, 'prod'),
-    // An array of files to serve at given URI's. 
-    routes: [
-      {
-        uri: '/',
-        file: Path.resolve(__dirname, 'prod', 'index.html')
+    devServer: {
+      // The host name used by server when listening for requests.
+      hostname: 'localhost',
+      
+      // The port on which the server should listen for requests.
+      port: 3000,
+      
+      // The server's public directory, used as the base directory for the domain.
+      publicDir: Path.resolve( __dirname, 'prod'),
+      
+      // The path at which compiled assets can be resolved relative to publicDir.
+      // (Webpack's public path property: https://webpack.js.org/guides/public-path/)
+      publicPath: '/assets/js/',
+      
+      // Array of uri's and the corresponding file to serve.  (Accepts wildcards.)
+      routes: [
+        {
+          uri: '/',
+          file: Path.resolve(__dirname, 'prod', 'index.html')
+        }
+      ],
+      
+      // Hot module replacement requires that a specific JavaScript input/output pair be specified.
+      useHotModuleReplacement: true,
+      hotModuleBuild: {
+        input: Path.resolve(__dirname, 'src', 'javascript', 'typescript', 'app.tsx'),
+        output: Path.resolve(__dirname, 'prod', 'assets', 'js', 'app.js'),
+        sourcemap: true
       }
-    ],
-    // If using Hot Module Replacement, a specific JavaScript
-    // input/output path needs to be specified.
-    useHotModuleReplacement: true,
-    hotModuleBuild: {
-      input: Path.resolve(__dirname, 'src', 'javascript', 'typescript', 'app.tsx'),
-      output: Path.resolve(__dirname, 'prod', 'assets', 'js', 'app.js'),
-      sourcemap: true
     }
   }
 ```

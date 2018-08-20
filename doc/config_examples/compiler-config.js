@@ -40,10 +40,22 @@ module.exports = {
    * Settings for the local dev server.
    */
   devServer: {
-    hostname: 'localhost', // Domain name used by the server to respond to requests.
-    port: 3000, // The port on which the server should listen for requests.
-    publicPath: '/assets/js/', // Webpack's publicPath property, essentially the path at which assets can be resolved.
-    publicDir: Path.resolve( __dirname, 'prod'), // Directory from which the server should serve content.
+    /** The host name used by server when listening for requests. */
+    hostname: 'localhost',
+    
+    /** The port on which the server should listen for requests. */
+    port: 3000,
+    
+    /** The server's public directory, used as the base directory for the domain. */
+    publicDir: Path.resolve( __dirname, 'prod'),
+    
+    /**
+     * The path at which compiled assets can be resolved relative to publicDir.
+     * (Webpack's public path property: https://webpack.js.org/guides/public-path/)
+     */
+    publicPath: '/assets/js/',
+    
+    /** Array of uri's and the corresponding file to serve.  (Accepts wildcards.) */
     routes: [
       {
         uri: '/',
