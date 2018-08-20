@@ -86,6 +86,42 @@ Although the asset-compiler ships with the TypeScript compiler as a dependency, 
 > A sample `tsconfig.json` file can be found here:  
 [https://raw.githubusercontent.com/Jon-Richards/asset-compiler/master/doc/config_examples/tsconfig.json](https://raw.githubusercontent.com/Jon-Richards/asset-compiler/master/doc/config_examples/tsconfig.json)
 
+### Dev Server
+
+The compiler ships with a simple [Express server](https://www.npmjs.com/package/express) for quickly testing your work, it also supports [hot module replacement](https://webpack.js.org/concepts/hot-module-replacement/).  **Not to be used as a production implementation.**  
+Configuration is as follows:
+```javascript
+// in compiler-config.js
+module.exports = {
+  // [...] CSS amd JavaScript configurations
+
+  devServer: {
+    // Domain at which the server takes requets.
+    hostname: 'localhost',
+    // Port on which to listen for requets.
+    port: 3000,
+    // Used by Webpack, SEE: https://webpack.js.org/guides/public-path/
+    publicPath: '/assets/js/',
+    // The server "public" directory.
+    publicDir: Path.resolve( __dirname, 'prod'),
+    // An array of files to serve at given URI's. 
+    routes: [
+      {
+        uri: '/',
+        file: Path.resolve(__dirname, 'prod', 'index.html')
+      }
+    ],
+    // If using Hot Module Replacement, a specific JavaScript
+    // input/output path needs to be specified.
+    useHotModuleReplacement: true,
+    hotModuleBuild: {
+      input: Path.resolve(__dirname, 'src', 'javascript', 'typescript', 'app.tsx'),
+      output: Path.resolve(__dirname, 'prod', 'assets', 'js', 'app.js'),
+      sourcemap: true
+    }
+  }
+```
+
 ---
 
 ## Usage
@@ -100,6 +136,8 @@ Compiler.css(); // Builds CSS
 Compiler.js(); // Builds JavasScript or TypeScript
 
 Compiler.ts(); // Builds JavaScript or TypeScript (syntactic sugar)
+
+Compiler.devserver(); // Spin up the dev server.
 ```
 ### Package.json
 > The package will add the command `$ asset-compiler` to the project.  If you install the package globally, the command will be added to your path.
@@ -107,7 +145,8 @@ Compiler.ts(); // Builds JavaScript or TypeScript (syntactic sugar)
 "scripts" : {
   "build"    : "asset-compiler",
   "build:js" : "asset-compiler --js",
-  "build:css" : "asset-compiler --css"
+  "build:css" : "asset-compiler --css",
+  "devserver" : "asset-compiler --devserver"
 }
 ```
 
@@ -129,6 +168,9 @@ Watch the specified directory for changes and re-run the script if one is detect
 ```javascript
 $ ./node_modules/.bin/asset-compiler -c --watch='./dev/assets/css';
 ```
+
+`-d --devserver`  
+Run the dev server.
 
 ---
 
