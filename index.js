@@ -53,8 +53,7 @@ function watch (dir) {
  */
 function build_js() {
   for (var i = 0; i < Config.js.length; i++) {
-    let _conf = Config.js[i];
-    Js.build(_conf.input, _conf.output, _conf.sourcemap);
+    Js.build(Config.js[i]);
   }
 }
 

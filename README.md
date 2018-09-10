@@ -48,7 +48,12 @@ module.exports = {
     {
       input: '<path to entry JavaScript or TypeScript file>',
       output: '<path to the directory in which the resulting file is placed>',
-      sourcemap: true
+      sourcemap: true,
+      html: {
+        // for a complete list of options,
+        // see: https://github.com/jantimon/html-webpack-plugin
+        filename: '<path relative to output directory / file_name.html'
+      }
     },
     {...} // another input/output node
   ],
@@ -228,3 +233,35 @@ This approach allows the following advantages:
 2. Webpack effectively does the namespacing for you.  CSS classes within each file can be named concisely, e.g. ".button".
 3. You can still leverage the cascade if you choose to.
 4. Only the SCSS modules that you import will be included in the rendered CSS file, resulting in lighter files.
+
+### Generating HTML
+
+When running a JavaScript build, an optional `html` property can
+be included in each build node.  The `html` property is an array of object literals representing settings for an html file that will automatically link to the resulting JavaScript and CSS output of the build node. See the example configuration below:
+
+```javascript
+js: [
+  {
+    input: Path.resolve(__dirname, 'src', 'javascript', 'typescript', 'app.tsx'),
+    output: Path.resolve(__dirname, 'prod', 'assets', 'js', 'app.js'),
+    sourcemap: true,
+    html: [
+      {
+        filename: './../../index.html',
+        template: Path.resolve(__dirname, 'src', 'html', 'index.hbs'),
+        minify: { collapseWhitespace: true }
+      },
+      {...} // additional HTML files
+    ]
+  }
+],
+```
+
+The example above will generate a file, `index.html` in the project's `/prod` directory.  The html file will be generated from a [handlebars](https://www.npmjs.com/package/handlebars-loader) template, `index.hbs`.  Other supported templating engines are [EJS](http://ejs.co/) and raw HTML, but [handlebars](https://handlebarsjs.com/) is the recommended method.
+
+> NOTE: If the build sets Webpack's `publicpath` property, (as it does when the devserver's settings are active.) the generated HTML will link to assets relative to the public path.  This allows Hot Module Replacement to work with generated HTML.
+
+> For more information, see the following documentation:  
+> [WenPack-HTML-Plugin](https://github.com/jantimon/html-webpack-plugin)  
+> [Handlbars-Loader](https://www.npmjs.com/package/handlebars-loader)  
+> [Handlebars Templating Engine](https://handlebarsjs.com/)

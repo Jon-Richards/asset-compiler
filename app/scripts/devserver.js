@@ -63,11 +63,12 @@ function configureDevMiddleware (webpack) {
  * @returns A complete webpack configuration object for hot module replacement.
  */
 function configureWebpackForHMR (hmrSettings) {
-  let _entry = [
+  hmrSettings.input = [
     Pathfinder.process_to_localModule('webpack-hot-middleware') + '/client?path=/__webpack_hmr&timeout=20000',
     hmrSettings.input
-  ];
-  let _config = CompleteWebpackConfig(_entry, hmrSettings.output, hmrSettings.sourcemap);
+  ]
+
+  let _config = CompleteWebpackConfig(hmrSettings);
   
   return _config;
 }
@@ -100,7 +101,7 @@ module.exports = () => {
   }
 
   // Listen for requests
-  _server.listen(_settings.port, () => {
+  _server.listen(_settings.port, _settings.hostname, () => {
     Echo('Listening on port ' + _settings.port, 'yellow');
     Echo('WARNING: The dev server compiles its output to memory, not actual files. ' + 
          'If you wish to compile to files, please run a normal JavaScript build.', 

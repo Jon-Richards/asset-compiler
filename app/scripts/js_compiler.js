@@ -10,13 +10,12 @@ const CompleteWebpackConfig = require('./../utils/complete_webpack_config');
  * For callback configuration options, see: 
  * https://github.com/webpack/docs/wiki/node.js-api
  * 
- * @param {string} input Path to the entry file that Webpack should use.
- * @param {string} output Path to the file that Webpack should export.
- * @param {boolean} createSourceMap If Webpack should also create a map file for the result.
+ * @param configNode The JS node from the compiler-config file for which
+ *                   this build is being run.
  */
-function build_js(input, output, createSourceMap) {
+function build_js(configNode) {
 
-  let _wp_config = CompleteWebpackConfig(input, output, createSourceMap);
+  let _wp_config = CompleteWebpackConfig(configNode);
 
   // Run Webpack with the new config.
   let _wp = Webpack(_wp_config);

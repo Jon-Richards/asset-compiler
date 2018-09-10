@@ -6,10 +6,13 @@
  */
 
 
+ 
 const Path = require('path');
 const Fs = require('fs');
 const Echo = require('./echo.js');
 const Config = require( Path.resolve( process.cwd(), 'compiler-config.js' ) );
+const GeneratePlugins = require('./generate_webpack_plugins');
+
 
 
 /**
@@ -56,13 +59,16 @@ function getPublicPath (config) {
  * Imports the webpack.config.js being used by the project
  * and applies the properties defined in compiler-config.js.
  * 
- * @param {string} input Path to the entry file that Webpack should use.
- * @param {string} output Path to the file that Webpack should export.
- * @param {boolean} createSourceMap If Webpack should also create a map file for the result.
+ * @param {object} configNode The JS node for which this build
+ *                            is being run.
  * 
  * @returns A valid Webpack configuration object.
  */
-module.exports = (input, output, createSourceMap) => {
+module.exports = (configNode) => {
+  let _input = configNode.input;
+  let _output = configNode.output;
+  let _createSourceMap = configNode.sourcemap;
+  
   // Determine if we should use the default webpack config or one in the project root.
   let _wp_config_path = resolveWebpackConfig();
   Echo('Using webpack.config.js in ' + _wp_config_path);
@@ -70,22 +76,30 @@ module.exports = (input, output, createSourceMap) => {
   
   // Webpack accepts key:value pairs as its entry.  Using this format establishes the key as
   // the "chunk" name, which Webpack can then use for outputs in various plugins, loaders, etc.
-  let _chunkname = String(Path.basename(output)).replace(/\.[^/.]+$/, '');
+  let _chunkname = String(Path.basename(_output)).replace(/\.[^/.]+$/, '');
   _wp_config.entry = {
-    [_chunkname]: input
+    [_chunkname]: _input
   };
   
   // Configure the output values.
   _wp_config.output = {
-    path: Path.dirname(output),
-    filename: Path.basename(output)
+    path: Path.dirname(_output),
+    filename: Path.basename(_output)
   }
 
-  // Additional checks against the compiler-config file.
-  let _publicPath = getPublicPath(Config); // SEE https://webpack.js.org/guides/public-path/
+  // Set public path (if one is defined.)
+  // SEE https://webpack.js.org/guides/public-path/
+  let _publicPath = getPublicPath(Config);
   if (_publicPath) _wp_config.output.publicPath = _publicPath;
+
+  // Set the environment.
   _wp_config.mode = Config.environment;
-  _wp_config.devtool = createSourceMap ? 'source-map' : '';
+
+  // Set source map options.
+  _wp_config.devtool = _createSourceMap ? 'source-map' : '';
+
+  // Instantiate relevant plugins for this build.
+  _wp_config.plugins = GeneratePlugins(configNode);
 
   return _wp_config;
 }

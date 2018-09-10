@@ -7,6 +7,7 @@ const BabelPreset_React = require('babel-preset-react');
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 const Config = require(Path.resolve(process.cwd(), 'compiler-config.js'));
 
+
 module.exports = {    
   entry: '', // populated by ./compilers/js_compiler.js
 
@@ -19,16 +20,10 @@ module.exports = {
   stats: 'verbose',
 
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx', '.css', '.scss', '.sass']
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.css', '.scss', '.sass', '.html', '.hbs', '.handlebars', '.ejs']
   },
-  
-  plugins: [
-    new MiniCSSExtractPlugin({
-      filename: '[name].css',
-      chunkFilename: '[id].css'
-    }),
-    new Webpack.HotModuleReplacementPlugin()
-  ], // end plugins
+
+  plugins: [], // populated by ./compilers/js_compiler.js
 
   module: {
     rules: [
@@ -37,7 +32,7 @@ module.exports = {
        * Typescript Handling
        */
       {
-        test: /\.tsx?$/,
+        test: /\.tsx$/,
         use: [
           {
             loader: Pathfinder.process_to_localModule('ts-loader'),
@@ -50,7 +45,7 @@ module.exports = {
        * JSX Handling
        */
       { 
-        test: /\.jsx?/,
+        test: /\.jsx$/,
         use: [
           {
             loader: Pathfinder.process_to_localModule('babel-loader'),
@@ -60,6 +55,30 @@ module.exports = {
                 BabelPreset_React
               ]
             }
+          }
+        ]
+      },
+
+      /**
+       * HTML Handling
+       */
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: Pathfinder.process_to_localModule('html-loader'),
+            options: {
+              interpolate: true
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(hbs|handlebars)$/,
+        use: [
+          {
+            loader: Pathfinder.process_to_localModule('handlebars-loader'),
+            options: {}
           }
         ]
       },
