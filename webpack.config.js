@@ -20,7 +20,26 @@ module.exports = {
   stats: 'verbose',
 
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx', '.css', '.scss', '.sass', '.html', '.hbs', '.handlebars', '.ejs']
+    extensions: [
+      '.js', 
+      '.jsx', 
+      '.ts', 
+      '.tsx', 
+      '.css', 
+      '.scss', 
+      '.sass', 
+      '.html', 
+      '.hbs', 
+      '.handlebars', 
+      '.ejs',
+      '.png',
+      '.jpg',
+      '.gif',
+      '.svg',
+      '.otf',
+      '.ttf',
+      '.woff'
+    ]
   },
 
   plugins: [], // populated by ./compilers/js_compiler.js
@@ -109,6 +128,34 @@ module.exports = {
           {
             loader: Pathfinder.process_to_localModule('sass-loader'),
             options: {}
+          }
+        ]
+      },
+      /**
+       * Image Handling
+       */
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        use: [
+          {
+            loader: Pathfinder.process_to_localModule('file-loader'),
+            options: {
+              name: '../img/[name].[ext]?[hash]'
+            }
+          }
+        ]
+      },
+      /**
+       * Font Handling
+       */
+      {
+        test: /\.(ttf|otf|woff)$/,
+        use: [
+          {
+            loader: Pathfinder.process_to_localModule('file-loader'),
+            options: {
+              name: '../font/[name].[ext]?[hash]'
+            }
           }
         ]
       }

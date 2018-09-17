@@ -23,6 +23,7 @@
     "css-loader": "0.28.11",
     "ejs": "2.6.1",
     "express": "4.16.3",
+    "file-loader": "^2.0.0",
     "handlebars": "4.0.12",
     "handlebars-loader": "^1.7.0",
     "html-loader": "0.5.5",

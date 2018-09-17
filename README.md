@@ -197,6 +197,21 @@ Run the dev server.
 
 ## Further Reading
 
+### Images and Fonts
+
+The compiler supports the following image file extensions and will place them in a `img/` directory adjascent to the output path for JavaScript builds:
+* '.jpg'
+* '.png'
+* '.gif'
+* .'svg'
+
+The following font formats are also supported.  These will be placed in a `font/` directory adjascent to the JavaScript output directory.:
+* '.otf'
+* '.ttf'
+* '.woff'
+
+> Note that .svg is only supported for images.  This is because not all browsers support .svg as a format for webfonts.  The supported font formats are supported across all modern browsers.
+
 ### CSS Modules
 
 > This is an **optional** feature.  The asset compiler ships with an independant solution for compiling SCSS.  If you'd like to import your CSS via your JS however, read on...
